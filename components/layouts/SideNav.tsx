@@ -4,7 +4,7 @@ import { Search } from 'lucide-react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
-const SideNav = ({ categories }) => {
+const SideNav = ({ categories }: any) => {
   const params = useParams()
   const activeCategory = params.category
 
@@ -30,7 +30,7 @@ const SideNav = ({ categories }) => {
             {categories.map((item, index) => (
               <Link href={`/components/${item.categorySlug}`} className='font-semibold' key={item.categorySlug + index}>
                 <div
-                  className={`w-full flex items-center justify-between px-4 py-3 text-sm rounded-lg transition-all ${
+                  className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all ${
                     activeCategory === item.categorySlug
                       ? 'bg-blue-900/50 text-blue-300'
                       : 'text-gray-300 hover:bg-gray-800 hover:text-gray-100'

@@ -1,14 +1,7 @@
-'use client'
-
-import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
-import { Search, Github, ArrowRight, ChevronRight, Star, Sparkles, Menu, X } from 'lucide-react'
-import LoadingAnimations from '@/components/DemoComponents/LoadingAnimations'
+import { Sparkles } from 'lucide-react'
 
 const Homepage = () => {
-
-
   return (
     <div className="min-h-screen bg-white antialiased">
       {/* Hero Section with Animated Background */}

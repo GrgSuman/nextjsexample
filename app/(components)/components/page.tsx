@@ -23,7 +23,7 @@ const ComponentsPage = async () => {
       {/* Components Grid */}
       <div className="p-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {components.map((component, index) => (
+          {components?.map((component, index) => (
            <IndividualCards key={index} data={component.data} />
           ))}
         </div>

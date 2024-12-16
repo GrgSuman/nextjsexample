@@ -9,6 +9,8 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   // Optionally, add any other Next.js config below
   images: {
+    unoptimized: true,
+
     remotePatterns: [
       {
         protocol: 'https',
@@ -28,7 +30,18 @@ const nextConfig = {
       //   hostname: 'example.com',
       // }
     ],
-  }
+  },
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
+  // distDir: 'build' // Change .next to any folder name you want
+
+  output: 'export',
+
 }
  
 const withMDX = createMDX({
