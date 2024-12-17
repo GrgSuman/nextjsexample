@@ -41,7 +41,6 @@ const nextConfig = {
   // distDir: 'build' // Change .next to any folder name you want
 
   output: 'export',
-  basePath: '/nextjsexample',  // Add this line
   assetPrefix: '/nextjsexample',  // Add this line too
 
 }
