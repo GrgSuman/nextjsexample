@@ -29,8 +29,8 @@ const NavLayout = () => {
       }`}>
         <div className="mx-auto">
           <div className="flex items-center justify-between h-16 px-6">
-            <Link href="/" className="font-bold text-xl flex items-center gap-2 text-white">
-              <ChevronsLeftRight className="text-indigo-400" />
+            <Link href="/" className="font-bold text-[1.4rem] flex items-center gap-2 text-white">
+              <ChevronsLeftRight height={35} width={35} className="text-indigo-400" />
               <span className="block">nextjsexample</span>
             </Link>
             

@@ -30,7 +30,7 @@ const SideNav = ({ categories }) => {
             {categories.map((item, index) => (
               <Link href={`/components/${item.categorySlug}`} className='font-semibold' key={item.categorySlug + index}>
                 <div
-                  className={`w-full flex items-center justify-between px-4 py-3 text-sm rounded-lg transition-all ${
+                  className={`w-full flex items-center justify-between px-4 py-3 text-md rounded-lg transition-all ${
                     activeCategory === item.categorySlug
                       ? 'bg-blue-900/50 text-blue-300'
                       : 'text-gray-300 hover:bg-gray-800 hover:text-gray-100'
