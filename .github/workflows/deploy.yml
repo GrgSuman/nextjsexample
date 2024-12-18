@@ -23,7 +23,9 @@ jobs:
         with:
           node-version: 18
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        run: |
+          npm install --package-lock-only
+          npm install --legacy-peer-deps
       - name: Build
         run: npm run build
       - name: Upload artifact
