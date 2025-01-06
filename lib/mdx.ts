@@ -6,18 +6,24 @@ import matter from 'gray-matter'
 const componentsDirectory = path.join(process.cwd(), 'posts/components')
 
 export function getAllPostsData() {
-  const fileNames = fs.readdirSync(componentsDirectory)
-  const allPostsData = fileNames.map((fileName) => {
-    const fullPath = path.join(componentsDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    const matterResult = matter(fileContents)
+  try{
+    const fileNames = fs.readdirSync(componentsDirectory)
+    const allPostsData = fileNames.map((fileName) => {
+      const fullPath = path.join(componentsDirectory, fileName)
+      const fileContents = fs.readFileSync(fullPath, 'utf8')
+      const matterResult = matter(fileContents)
+  
+      return {
+        data: matterResult.data,
+        content: matterResult.content,
+      }
+    })
+    return allPostsData
+  }
+  catch(e){
+    return []
+  }
 
-    return {
-      data: matterResult.data,
-      content: matterResult.content,
-    }
-  })
-  return allPostsData
 }
 
 
