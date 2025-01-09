@@ -6,11 +6,7 @@ const IndividualCards = ({ data }) => {
   return (
     <Link href={`/components/${data.categorySlug}/${data.slug}`} className="block">
       <div className="group relative h-64 bg-white rounded-2xl border border-gray-200 hover:border-blue-500 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md">
-        {/* Top gradient bar */}
-        <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"></div>
-        
-        {/* Background pattern */}
-        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+        {/* <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"></div> */}
         
         <div className="p-6 h-full flex flex-col">
           {/* Header section */}
@@ -22,10 +18,6 @@ const IndividualCards = ({ data }) => {
               <span className="text-sm font-semibold text-gray-600 group-hover:text-blue-600 transition-colors duration-300">
                 {data.category}
               </span>
-            </div>
-            <div className="flex items-center space-x-1.5 text-gray-400 group-hover:text-yellow-500 transition-colors duration-300">
-              <Star className="w-5 h-5 fill-current" />
-              <span className="text-sm font-medium">{data.popularity || "New"}</span>
             </div>
           </div>
 
