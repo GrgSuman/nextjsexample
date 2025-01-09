@@ -14,7 +14,7 @@ const UploadComponentForm = ({ allCategories }) => {
     title: "",
     description: "",
     componentName: "",
-    category: "marketing",
+    category: "",
     thumbnailUrl: "",
     jsxCode: "",
     usage: "",
@@ -44,12 +44,13 @@ const UploadComponentForm = ({ allCategories }) => {
       category: formData.category,
       componentName: formData.componentName,
       categorySlug: slugGenerator(formData.category),
-      thumbnailUrl: formData.thumbnailUrl,
+      thumbnailUrl: "",
       lastUpdated: new Date(formData.lastUpdated).toISOString().split("T")[0],
       usage: formData.usage,
     };
     const fileContent = matter.stringify(formData.jsxCode, frontmatterData);
     const res = await saveComponent(fileContent, frontmatterData.slug, formData.componentName,formData.jsxCode);
+    console.log(res)
     if(res.success) {
       router.push("/components")
     }
@@ -193,7 +194,7 @@ const UploadComponentForm = ({ allCategories }) => {
                 )}
               </div>
 
-              <div>
+              {/* <div>
                 <label className="block text-sm font-medium mb-2">
                   Thumbnail URL
                 </label>
@@ -209,7 +210,7 @@ const UploadComponentForm = ({ allCategories }) => {
                     placeholder="Enter image URL"
                   />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 

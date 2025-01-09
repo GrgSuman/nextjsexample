@@ -1,50 +1,54 @@
 "use client";
 import React, { useState } from "react";
-import {  Code,Eye,Layers,ChevronLeft} from "lucide-react";
+import { Code, Eye, Layers, ChevronLeft } from "lucide-react";
 import CodeDisplay from "../CodeDisplay";
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
+import { Inter } from "next/font/google";
 
+// Load Inter with specific weights
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
 
-
-const ComponentDetailPage = ({myData, frontmatter}) => {
+const ComponentDetailPage = ({ myData, frontmatter }) => {
   // Dynamic import with loading state
   const DynamicComponent = dynamic(
     () => import(`@/components/DemoComponents/${frontmatter.componentName}`),
     {
+
       loading: () => (
         <div className="flex items-center justify-center h-64">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
         </div>
       ),
-      ssr: false
+      ssr: false,
     }
   );
   const [activeTab, setActiveTab] = useState("preview");
   return (
     <div>
       {/* Header */}
-      <div className="border-b bg-white">
-        <div className="max-w-7xl mx-auto px-8 py-8">
-          <button
-            onClick={() => window.history.back()}
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8 text-base"
-          >
-            <ChevronLeft className="h-5 w-5" />
-            Back to components
+      <div className={`bg-white ${inter.className}`}>
+        <div className=" mx-auto px-8 py-8">
+
+          <button onClick={() => window.history.back()} className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8 text-base">
+            <ChevronLeft className="h-5 w-5" /> Back to components
           </button>
 
           <div className="flex items-start justify-between mb-8">
             <div>
               <h1 className="text-3xl font-bold mb-3">{frontmatter.title}</h1>
-              <p className="text-gray-600 text-lg max-w-2xl">
-               {frontmatter.description}
-              </p>
+              <p className="text-gray-600 text-lg max-w-2xl">{frontmatter.description}</p>
             </div>
           </div>
+
           <div className="flex items-center gap-8">
             {[
               { id: "preview", icon: Eye, label: "Preview" },
-              { id: "code", icon: Code, label: "Code" }
+              { id: "code", icon: Code, label: "Code" },
+              { id: "usage", icon: Layers, label: "Usage" },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -61,31 +65,21 @@ const ComponentDetailPage = ({myData, frontmatter}) => {
             ))}
           </div>
         </div>
-        
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl bg-white  mx-auto px-8 py-10 pb-[5rem]">
-        {activeTab === "preview" && (
-          <>
-          <div className="space-y-8 border shadow-sm p-4 py-[5rem] min-h-fit w-full">
-              <DynamicComponent/>
-          </div>
+      <div className=" bg-white  mx-auto pb-[5rem]">
 
-          <h1 className="flex items-center gap-2 pb-4 mt-8 text-[1.2rem] font-medium transition-colors"> <Layers/> Usage</h1>
-
-          <div className="bg-white rounded-xl border  shadow-sm p-8">
-          {/* Usage Instructions */}
-          {frontmatter.usage}
-          </div>
-          </>
-        )}
+        {activeTab === "preview" && <DynamicComponent />}
 
         {activeTab === "code" && <CodeDisplay myData={myData} />}
 
+        {activeTab === "usage" && (
+          <>
+            <p>{frontmatter.usage}</p>
+          </>
+        )}
       </div>
-
-
     </div>
   );
 };
