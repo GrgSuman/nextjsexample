@@ -23,7 +23,7 @@ export default function CategoriesSection({ categories }) {
                 {" "}
                 {activeCategory == undefined
                   ? "All UI Components"
-                  : getCurrentCategoryDetails(activeCategory).category}{" "}
+                  : getCurrentCategoryDetails(activeCategory).category}
               </h1>
               <p className="text-gray-600">
                 {activeCategory == undefined

@@ -1,16 +1,9 @@
-// Light Variation: Copy-Paste Components Design
-export default function HeroLight() {
-  const categories = [
-    { id: 1, name: "Buttons & CTAs", count: "45+" },
-    { id: 2, name: "Navigation Bars", count: "30+" },
-    { id: 3, name: "Hero Sections", count: "25+" },
-    { id: 4, name: "Input Fields", count: "40+" },
-    { id: 5, name: "Card Layouts", count: "35+" },
-    { id: 6, name: "Pricing Tables", count: "20+" },
-    { id: 7, name: "Testimonials", count: "25+" },
-    { id: 8, name: "Feature Lists", count: "30+" },
-  ];
+import { getAllCategories } from "@/lib/mdx";
+import Link from "next/link";
 
+// Light Variation: Copy-Paste Components Design
+export default async function HeroLight() {
+  const categories = await getAllCategories();
   return (
     <div className="relative min-h-[90vh] bg-gradient-to-br pt-[2rem] md:pt-[3rem] from-rose-50 via-white to-indigo-50 overflow-hidden">
       <div className="container mx-auto px-4 py-12 md:py-24 relative">
@@ -50,19 +43,20 @@ export default function HeroLight() {
                 </button>
               </div>
               <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
-                {categories.map((category) => (
-                  <button
-                    key={category.id}
+                {categories.map((category,index) => (
+                  <Link
+                    key={index}
+                    href={`/components/${category.categorySlug}`}
                     className="group p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-white shadow-sm hover:shadow-md 
                       transition-all hover:scale-102 text-left w-full"
                   >
                     <div className="text-sm sm:text-base text-center font-semibold text-gray-800 mb-1 sm:mb-2">
-                      {category.name}
+                      {category.category}
                     </div>
                     <div className="text-xs sm:text-sm text-center text-gray-500">
-                      {category.count}
+                      {/* {category.count} */}
                     </div>
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>
